@@ -60,11 +60,11 @@ via puppet
 ### How to use with parameters
 
 ```
-class { 'puppetserver':
+class { 'puppetagent':
   agent_certname    => $trusted[certname],
   agent_version     => '1.10.1-1.el7',
-  agent_server      => 'pupperserver.hacklab'
-  agent_environment => 'production'
+  agent_server      => 'pupperserver.hacklab',
+  agent_environment => 'production',
   agent_runinterval => '3600'
 }
 ```
