@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/gutocarvalho/puppet-puppetagent.svg?branch=master)](https://travis-ci.org/gutocarvalho/puppet-puppetagent) ![License](https://img.shields.io/badge/license-Apache%202-blue.svg0 [![GitHub version](https://badge.fury.io/gh/gutocarvalho%2Fpuppet-puppetserver.svg)](https://badge.fury.io/gh/gutocarvalho%2Fpuppet-puppetserver)
+[![Build Status](https://travis-ci.org/gutocarvalho/puppet-puppetagent.svg?branch=master)](https://travis-ci.org/gutocarvalho/puppet-puppetagent) ![License](https://img.shields.io/badge/license-Apache%202-blue.svg) [![GitHub version](https://badge.fury.io/gh/gutocarvalho%2Fpuppet-puppetserver.svg)](https://badge.fury.io/gh/gutocarvalho%2Fpuppet-puppetserver)
 
 ## Puppetagent Module
 
