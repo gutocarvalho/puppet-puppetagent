@@ -1,6 +1,6 @@
 {
      "name": "gutocarvalho-puppetagent",
-     "version": "1.0.2",
+     "version": "1.0.4",
      "author": "Guto Carvalho",
      "license": "Apache-2.0",
      "summary": "A simple Puppet module for puppet agent",
@@ -29,6 +29,5 @@
        }
       ],
      "dependencies": [
-     ],
-     "data_provider": "hiera"
+     ]
    }
