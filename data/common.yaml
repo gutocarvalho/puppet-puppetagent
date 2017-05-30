@@ -1,6 +1,6 @@
 ---
 puppetagent::agent_certname: "%{trusted.certname}"
-puppetagent::agent_version: '1.10.1-1.el7'
+puppetagent::agent_version: 'installed'
 puppetagent::agent_server: 'puppetserver.hacklab'
 puppetagent::agent_environment: 'production'
 puppetagent::agent_runinterval: '3600'
