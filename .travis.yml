@@ -14,15 +14,18 @@ matrix:
   include:
    - rvm: 2.1.9
      env: PUPPET_GEM_VERSION='~> 4.10.1' STRICT_VARIABLES=yes
+   - rvm: 2.1.9
+     env: PUPPET_GEM_VERSION='~> 4.10.2' STRICT_VARIABLES=yes
+   - rvm: 2.1.9
+     env: PUPPET_GEM_VERSION='~> 4.10.3' STRICT_VARIABLES=yes
 script:
   - bundle exec rake syntax
   - bundle exec rake lint
-  - bundle exec rake spec
   - bundle exec rake metadata_lint
+  - bundle exec rake spec
 branches:
   only:
   - master
 notifications:
   email:
    - gutocarvalho@instruct.com.br
-
