@@ -16,6 +16,8 @@ describe 'puppetagent', :type => :class do
   it { is_expected.to contain_class('puppetagent') }
   it { is_expected.to contain_class('puppetagent::install').that_comes_before('Class[puppetagent::config]') }
   it { is_expected.to contain_class('puppetagent::config').that_comes_before('Class[puppetagent::service]') }
+  it { is_expected.to contain_class('puppetagent::service') }
+
 
   context 'puppetserver::install' do
     it { is_expected.to contain_package('puppet-agent') }
