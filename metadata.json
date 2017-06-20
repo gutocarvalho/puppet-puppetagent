@@ -1,13 +1,13 @@
 {
      "name": "gutocarvalho-puppetagent",
-     "version": "1.0.5",
+     "version": "1.0.6",
      "author": "Guto Carvalho",
      "license": "Apache-2.0",
      "summary": "A simple Puppet module for puppet agent",
      "source": "https://github.com/gutocarvalho/puppet-puppetagent",
      "project_page": "https://github.com/gutocarvalho/puppet-puppetagent",
      "issues_url": "https://github.com/gutocarvalho/puppet-puppetagent/issues",
-     "tags": ["puppet", "puppet-agent", "puppet-aio"],
+     "tags": ["puppet", "puppet-agent", "puppet-aio", "puppetagent", "hiera5"],
      "requirements": [
     {
       "name": "puppet",

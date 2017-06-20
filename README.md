@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/gutocarvalho/puppet-puppetagent.svg?branch=master)](https://travis-ci.org/gutocarvalho/puppet-puppetagent) ![License](https://img.shields.io/badge/license-Apache%202-blue.svg) ![Version](https://img.shields.io/puppetforge/v/gutocarvalho/puppetserver.svg) ![Downloads](https://img.shields.io/puppetforge/dt/gutocarvalho/puppetserver.svg)
+[![Build Status](https://travis-ci.org/gutocarvalho/puppet-puppetagent.svg?branch=master)](https://travis-ci.org/gutocarvalho/puppet-puppetagent) ![License](https://img.shields.io/badge/license-Apache%202-blue.svg) ![Version](https://img.shields.io/puppetforge/v/gutocarvalho/puppetagent.svg) ![Downloads](https://img.shields.io/puppetforge/dt/gutocarvalho/puppetagent.svg)
 
 # Puppetagent
 
@@ -44,14 +44,14 @@ You should configure your hostname properly.
 
 You should configure your /etc/hosts properly.
 
-    ip fqdn alias puppet
+    ip fqdn alias
 
 ### Requirements
 
 - Puppet >= 4.10
-- Hiera >= 5
+- Hiera >= 3.3
 
-Unfortunately I intent to use Hiera v5 from start, so, yes, Hiera v3 is not compatible with this module.
+Unfortunately I intent to use Hiera v5 format from start, so, yes, Hiera v3 format is not compatible with this module.
 
 #### Upgrade your Puppet Agent
 
@@ -120,8 +120,8 @@ via puppetfile
 
 ```
 class { 'puppetagent':
-  agent_certname    => $trusted[certname],
-  agent_version     => '1.10.3-1.el7',
+  agent_certname    => $trusted['certname'],
+  agent_version     => '1.10.4-1.el7',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -132,8 +132,8 @@ class { 'puppetagent':
 
 ```
 class { 'puppetagent':
-  agent_certname    => $trusted[certname],
-  agent_version     => '1.10.3-1.el6',
+  agent_certname    => $trusted['certname'],
+  agent_version     => '1.10.4-1.el6',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -144,8 +144,8 @@ class { 'puppetagent':
 
 ```
 class { 'puppetagent':
-  agent_certname    => $trusted[certname],
-  agent_version     => '1.10.3-1trusty',
+  agent_certname    => $trusted['certname'],
+  agent_version     => '1.10.4-1trusty',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -156,8 +156,8 @@ class { 'puppetagent':
 
 ```
 class { 'puppetagent':
-  agent_certname    => $trusted[certname],
-  agent_version     => '1.10.3-1xenial',
+  agent_certname    => $trusted['certname'],
+  agent_version     => '1.10.4-1xenial',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -168,8 +168,8 @@ class { 'puppetagent':
 
 ```
 class { 'puppetagent':
-  agent_certname    => $trusted[certname],
-  agent_version     => '1.10.3-1wheezy',
+  agent_certname    => $trusted['certname'],
+  agent_version     => '1.10.4-1wheezy',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -180,8 +180,8 @@ class { 'puppetagent':
 
 ```
 class { 'puppetagent':
-  agent_certname    => $trusted[certname],
-  agent_version     => '1.10.3-1jessie',
+  agent_certname    => $trusted['certname'],
+  agent_version     => '1.10.4-1jessie',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -205,28 +205,37 @@ puppetagent::service (private)
 
 Type: String
 
+Certificate name for the agent
+
 #### `agent_version`
 
 Type: String
+
+The puppet agent package version (1.10.4-1xenial|installed|latest)
 
 #### `agent_server`
 
 Type: String
 
+The puppet master server to which the puppet agent should connect.
+
 #### `agent_environment`
 
 Type: String
+
+Set which environment your puppet agent will use.
 
 #### `agent_runinterval`
 
 Type: Integer
 
+Set how often puppet agent applies the catalog in seconds.
 
 ### Hiera Keys Sample
 
 ```
 puppetagent::agent_certname: "%{trusted.certname}"
-puppetagent::agent_version: '1.10.3-1.el7'
+puppetagent::agent_version: '1.10.4-1.el7'
 puppetagent::agent_server: 'puppetserver.hacklab'
 puppetagent::agent_environment: 'production'
 puppetagent::agent_runinterval: 3600
@@ -275,7 +284,7 @@ oses/distro/Debian/8.yaml
 This module was developed using
 
 - Puppet 4.10
-- Hiera v5
+- Hiera 3.3 (v5 format)
 - CentOS 7
 - Vagrant 1.9
   - box: gutocarvalho/centos7x64
