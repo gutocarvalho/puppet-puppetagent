@@ -14,7 +14,9 @@
 
 ## Overview
 
-This module will manage puppet-agent in your system.
+This module will manage puppet-agent 5.0 in your system.
+
+**If you are looking into puppet 4 please use an older version of this module.**
 
 This is a very simple module, usually used for development and test purposes.
 
@@ -48,50 +50,8 @@ You should configure your /etc/hosts properly.
 
 ### Requirements
 
-- Puppet >= 4.10
-- Hiera >= 3.3
-
-Unfortunately I intent to use Hiera v5 format from start, so, yes, Hiera v3 format is not compatible with this module.
-
-#### Upgrade your Puppet Agent
-
-Upgrade your puppet agent to >= 4.10, this is necessary to use Hiera v5 features.
-
-RedHat Family
-
-    # yum install puppet-agent
-
-Debian Family
-
-    # apt-get update
-    # apt-get install puppet-agent
-
-You need the PC1 repo configured to install puppet-agent.
-
-#### Upgrade your Hiera config
-
-You need to upgrade your hiera config, even with Puppet >= 4.10.
-
-    /etc/puppetlabs/puppet/hiera.yaml
-
-See the example bellow and upgrade your hiera config.
-
-```
-version: 5
-defaults:
-  datadir: data
-  data_hash: yaml_data
-hierarchy:
-  - name: "Per-node data (yaml version)"
-    path: "nodes/%{trusted.certname}.yaml" # Add file extension.
-
-  - name: "Other YAML hierarchy levels"
-    paths:
-      - "os/%{facts.os.family}.yaml"
-      - "common.yaml"
-```
-
-After that, you can use this module without problems.
+- Puppet >= 5
+- Hiera >= 3.4
 
 ## Installation
 
@@ -121,7 +81,7 @@ via puppetfile
 ```
 class { 'puppetagent':
   agent_certname    => $trusted['certname'],
-  agent_version     => '1.10.4-1.el7',
+  agent_version     => '5.0.0-1.el7',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -133,7 +93,7 @@ class { 'puppetagent':
 ```
 class { 'puppetagent':
   agent_certname    => $trusted['certname'],
-  agent_version     => '1.10.4-1.el6',
+  agent_version     => '5.0.0-1.el6',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -145,7 +105,7 @@ class { 'puppetagent':
 ```
 class { 'puppetagent':
   agent_certname    => $trusted['certname'],
-  agent_version     => '1.10.4-1trusty',
+  agent_version     => '5.0.0-1trusty',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -157,7 +117,7 @@ class { 'puppetagent':
 ```
 class { 'puppetagent':
   agent_certname    => $trusted['certname'],
-  agent_version     => '1.10.4-1xenial',
+  agent_version     => '5.0.0-1xenial',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -169,7 +129,7 @@ class { 'puppetagent':
 ```
 class { 'puppetagent':
   agent_certname    => $trusted['certname'],
-  agent_version     => '1.10.4-1wheezy',
+  agent_version     => '5.0.0-1wheezy',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -181,7 +141,7 @@ class { 'puppetagent':
 ```
 class { 'puppetagent':
   agent_certname    => $trusted['certname'],
-  agent_version     => '1.10.4-1jessie',
+  agent_version     => '5.0.0-1jessie',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -211,7 +171,7 @@ Certificate name for the agent
 
 Type: String
 
-The puppet agent package version (1.10.4-1xenial|installed|latest)
+The puppet agent package version (5.0.0-1xenial|installed|latest)
 
 #### `agent_server`
 
@@ -235,7 +195,7 @@ Set how often puppet agent applies the catalog in seconds.
 
 ```
 puppetagent::agent_certname: "%{trusted.certname}"
-puppetagent::agent_version: '1.10.4-1.el7'
+puppetagent::agent_version: '5.0.0-1.el7'
 puppetagent::agent_server: 'puppetserver.hacklab'
 puppetagent::agent_environment: 'production'
 puppetagent::agent_runinterval: 3600
@@ -269,6 +229,7 @@ This is an example of files under modules/puppetserver/data
 ```
 oses/family/RedHat.yaml
 oses/family/Debian.yaml
+oses/distro/CentOS/5.yaml
 oses/distro/CentOS/7.yaml
 oses/distro/CentOS/8.yaml
 oses/distro/Ubuntu/14.04.yaml
@@ -283,8 +244,8 @@ oses/distro/Debian/8.yaml
 
 This module was developed using
 
-- Puppet 4.10
-- Hiera 3.3 (v5 format)
+- Puppet 5.0.0
+- Hiera 3.4 (v5 format)
 - CentOS 7
 - Vagrant 1.9
   - box: gutocarvalho/centos7x64
@@ -310,7 +271,7 @@ This module uses puppet-lint, puppet-syntax, metadata-json-lint, rspec-puppet, b
 
 #### Running acceptance tests
 
-Acceptance tests (Beaker) can be executed using ./acceptance.sh. There is a matrix 1/6 to test this class under Centos 6/7, Debian 7/8 and Ubuntu 14.04/16.04.
+Acceptance tests (Beaker) can be executed using ./acceptance.sh. There is a matrix 1/6 to test this class under Centos 5/6/7, Debian 7/8 and Ubuntu 12.04/14.04/16.04.
 
 If you want a detailed output, set this before run acceptance.sh
 
