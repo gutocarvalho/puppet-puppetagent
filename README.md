@@ -14,7 +14,7 @@
 
 ## Overview
 
-This module will manage puppet-agent 5.0 in your system.
+This module will manage puppet-agent 5.2 in your system.
 
 **If you are looking into puppet 4 please use an older version of this module.**
 
@@ -30,8 +30,10 @@ Augeas resource type is used to change parameters inside the puppet.conf.
 
 This module was tested under these platforms
 
-- CentOS 6 and 7
-- Debian 7 and 8
+- RedHat 5, 6 and 7
+- CentOS 5, 6 and 7
+- Scientific 6 and 7
+- Debian 7, 8 and 9
 - Ubuntu 14.04 and 16.04
 
 Tested only in X86_64 arch.  
@@ -51,7 +53,8 @@ You should configure your /etc/hosts properly.
 ### Requirements
 
 - Puppet >= 5
-- Hiera >= 3.4
+  - Hiera >= 3.4
+  - Facter >= 3.9
 
 ## Installation
 
@@ -81,7 +84,7 @@ via puppetfile
 ```
 class { 'puppetagent':
   agent_certname    => $trusted['certname'],
-  agent_version     => '5.0.0-1.el7',
+  agent_version     => '5.2.0-1.el7',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -93,7 +96,19 @@ class { 'puppetagent':
 ```
 class { 'puppetagent':
   agent_certname    => $trusted['certname'],
-  agent_version     => '5.0.0-1.el6',
+  agent_version     => '5.2.0-1.el6',
+  agent_server      => 'pupperserver.hacklab',
+  agent_environment => 'production',
+  agent_runinterval => 3600
+}
+```
+
+#### Example in EL 5
+
+```
+class { 'puppetagent':
+  agent_certname    => $trusted['certname'],
+  agent_version     => '5.2.0-1.el5',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -105,7 +120,7 @@ class { 'puppetagent':
 ```
 class { 'puppetagent':
   agent_certname    => $trusted['certname'],
-  agent_version     => '5.0.0-1trusty',
+  agent_version     => '5.2.0-1trusty',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -117,7 +132,7 @@ class { 'puppetagent':
 ```
 class { 'puppetagent':
   agent_certname    => $trusted['certname'],
-  agent_version     => '5.0.0-1xenial',
+  agent_version     => '5.2.0-1xenial',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -129,7 +144,7 @@ class { 'puppetagent':
 ```
 class { 'puppetagent':
   agent_certname    => $trusted['certname'],
-  agent_version     => '5.0.0-1wheezy',
+  agent_version     => '5.2.0-1wheezy',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -141,7 +156,19 @@ class { 'puppetagent':
 ```
 class { 'puppetagent':
   agent_certname    => $trusted['certname'],
-  agent_version     => '5.0.0-1jessie',
+  agent_version     => '5.2.0-1jessie',
+  agent_server      => 'pupperserver.hacklab',
+  agent_environment => 'production',
+  agent_runinterval => 3600
+}
+```
+
+#### Example in Debian 9
+
+```
+class { 'puppetagent':
+  agent_certname    => $trusted['certname'],
+  agent_version     => '5.2.0-1stretch',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -171,7 +198,7 @@ Certificate name for the agent
 
 Type: String
 
-The puppet agent package version (5.0.0-1xenial|installed|latest)
+The puppet agent package version (5.2.0-1xenial|installed|latest)
 
 #### `agent_server`
 
@@ -195,7 +222,7 @@ Set how often puppet agent applies the catalog in seconds.
 
 ```
 puppetagent::agent_certname: "%{trusted.certname}"
-puppetagent::agent_version: '5.0.0-1.el7'
+puppetagent::agent_version: '5.2.0-1.el7'
 puppetagent::agent_server: 'puppetserver.hacklab'
 puppetagent::agent_environment: 'production'
 puppetagent::agent_runinterval: 3600
@@ -236,6 +263,7 @@ oses/distro/Ubuntu/14.04.yaml
 oses/distro/Ubuntu/16.04.yaml
 oses/distro/Debian/7.yaml
 oses/distro/Debian/8.yaml
+oses/distro/Debian/9.yaml
 ```
 
 ## Development
@@ -244,11 +272,13 @@ oses/distro/Debian/8.yaml
 
 This module was developed using
 
-- Puppet 5.0.0
-- Hiera 3.4 (v5 format)
+- Puppet 5.2.0
+  - Hiera 3.4 (v5 format)
+  - Facter 3.9
 - CentOS 7
-- Vagrant 1.9
-  - box: gutocarvalho/centos7x64
+- VirtualBox 5.1.28
+- Vagrant 2.0
+  - box: gutocarvalho/centos7x64puppet5
 
 ### Testing
 
@@ -271,7 +301,7 @@ This module uses puppet-lint, puppet-syntax, metadata-json-lint, rspec-puppet, b
 
 #### Running acceptance tests
 
-Acceptance tests (Beaker) can be executed using ./acceptance.sh. There is a matrix 1/6 to test this class under Centos 5/6/7, Debian 7/8 and Ubuntu 12.04/14.04/16.04.
+Acceptance tests (Beaker) can be executed using ./acceptance.sh. There is a matrix 1/8 to test this class under Centos 5/6/7, Debian 7/8/9 and Ubuntu 14.04/16.04.
 
 If you want a detailed output, set this before run acceptance.sh
 
@@ -288,10 +318,11 @@ Our matrix values
     centos-7-x64
     debian-7-x64
     debian-8-x64
+    debian-9-x64
     ubuntu-1404-x64
     ubuntu-1604-x64
 
-This matrix needs vagrant (>=1.9) and virtualbox (>=5.1) to work properly, make sure that you have both of them installed.
+This matrix needs vagrant (>=2.0) and virtualbox (>=5.1) to work properly, make sure that you have both of them installed.
 
 ### Author/Contributors
 
