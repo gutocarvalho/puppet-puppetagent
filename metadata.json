@@ -1,13 +1,13 @@
 {
      "name": "gutocarvalho-puppetagent",
-     "version": "1.1.0",
+     "version": "1.2.0",
      "author": "Guto Carvalho",
      "license": "Apache-2.0",
      "summary": "A simple Puppet module for puppet agent",
      "source": "https://github.com/gutocarvalho/puppet-puppetagent",
      "project_page": "https://github.com/gutocarvalho/puppet-puppetagent",
      "issues_url": "https://github.com/gutocarvalho/puppet-puppetagent/issues",
-     "tags": ["puppet5", "puppet-agent", "puppet-aio", "puppetagent", "hiera5"],
+     "tags": ["puppet5", "puppet", "puppet-agent", "puppet-aio", "puppetagent", "hiera5"],
      "requirements": [
     {
       "name": "puppet",
@@ -17,11 +17,15 @@
      "operatingsystem_support": [
        {
        "operatingsystem":"RedHat",
-       "operatingsystemrelease":[ "6", "7" ]
+       "operatingsystemrelease":[ "5", "6", "7" ]
+       },
+       {
+       "operatingsystem":"Scientific",
+       "operatingsystemrelease":[ "5", "6", "7" ]
        },
        {
        "operatingsystem":"CentOS",
-       "operatingsystemrelease":[ "6", "7" ]
+       "operatingsystemrelease":[ "5", "6", "7" ]
        },
        {
        "operatingsystem": "Ubuntu",
@@ -29,7 +33,7 @@
        },
        {
        "operatingsystem": "Debian",
-       "operatingsystemrelease": [ "7", "8" ]
+       "operatingsystemrelease": [ "7", "8", "9" ]
        }
       ],
      "dependencies": [
