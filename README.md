@@ -14,7 +14,7 @@
 
 ## Overview
 
-This module will manage puppet-agent 5.2 in your system.
+This module will manage puppet-agent 5.3 in your system.
 
 **If you are looking into puppet 4 please use an older version of this module.**
 
@@ -52,9 +52,9 @@ You should configure your /etc/hosts properly.
 
 ### Requirements
 
-- Puppet >= 5
+- Puppet >= 5.x
   - Hiera >= 3.4
-  - Facter >= 3.9
+  - Facter >= 2.5
 
 ## Installation
 
@@ -84,7 +84,7 @@ via puppetfile
 ```
 class { 'puppetagent':
   agent_certname    => $trusted['certname'],
-  agent_version     => '5.2.0-1.el7',
+  agent_version     => '5.3.3-1.el7',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -96,7 +96,7 @@ class { 'puppetagent':
 ```
 class { 'puppetagent':
   agent_certname    => $trusted['certname'],
-  agent_version     => '5.2.0-1.el6',
+  agent_version     => '5.3.3-1.el6',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -108,7 +108,7 @@ class { 'puppetagent':
 ```
 class { 'puppetagent':
   agent_certname    => $trusted['certname'],
-  agent_version     => '5.2.0-1.el5',
+  agent_version     => '5.3.3-1.el5',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -120,7 +120,7 @@ class { 'puppetagent':
 ```
 class { 'puppetagent':
   agent_certname    => $trusted['certname'],
-  agent_version     => '5.2.0-1trusty',
+  agent_version     => '5.3.3-1trusty',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -132,7 +132,7 @@ class { 'puppetagent':
 ```
 class { 'puppetagent':
   agent_certname    => $trusted['certname'],
-  agent_version     => '5.2.0-1xenial',
+  agent_version     => '5.3.3-1xenial',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -144,7 +144,7 @@ class { 'puppetagent':
 ```
 class { 'puppetagent':
   agent_certname    => $trusted['certname'],
-  agent_version     => '5.2.0-1wheezy',
+  agent_version     => '5.3.3-1wheezy',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -156,7 +156,7 @@ class { 'puppetagent':
 ```
 class { 'puppetagent':
   agent_certname    => $trusted['certname'],
-  agent_version     => '5.2.0-1jessie',
+  agent_version     => '5.3.3-1jessie',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -168,7 +168,7 @@ class { 'puppetagent':
 ```
 class { 'puppetagent':
   agent_certname    => $trusted['certname'],
-  agent_version     => '5.2.0-1stretch',
+  agent_version     => '5.3.3-1stretch',
   agent_server      => 'pupperserver.hacklab',
   agent_environment => 'production',
   agent_runinterval => 3600
@@ -198,7 +198,7 @@ Certificate name for the agent
 
 Type: String
 
-The puppet agent package version (5.2.0-1xenial|installed|latest)
+The puppet agent package version (5.3.0-1xenial|installed|latest)
 
 #### `agent_server`
 
@@ -222,7 +222,7 @@ Set how often puppet agent applies the catalog in seconds.
 
 ```
 puppetagent::agent_certname: "%{trusted.certname}"
-puppetagent::agent_version: '5.2.0-1.el7'
+puppetagent::agent_version: '5.3.3-1.el7'
 puppetagent::agent_server: 'puppetserver.hacklab'
 puppetagent::agent_environment: 'production'
 puppetagent::agent_runinterval: 3600
@@ -272,9 +272,9 @@ oses/distro/Debian/9.yaml
 
 This module was developed using
 
-- Puppet 5.2.0
-  - Hiera 3.4 (v5 format)
-  - Facter 3.9
+- Puppet 5.3.3
+  - Hiera 3.4.2 (v5 format)
+  - Facter 2.5.1
 - CentOS 7
 - VirtualBox 5.1.28
 - Vagrant 2.0
