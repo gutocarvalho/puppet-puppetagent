@@ -15,11 +15,11 @@ describe 'puppetagent', :type => :class do
         it { is_expected.to contain_class('puppetagent::service') }
 
 
-        context 'puppetserver::install' do
+        context 'puppetagent::install' do
           it { is_expected.to contain_package('puppet-agent') }
         end
 
-        context 'puppetserver::config' do
+        context 'puppetagent::config' do
           it { is_expected.to contain_augeas('agent_certname').with({
             'context' => '/files/etc/puppetlabs/puppet/puppet.conf',
           })}
@@ -34,15 +34,23 @@ describe 'puppetagent', :type => :class do
           })}
         end
 
-        context 'puppetserver::service' do
+        describe 'puppetagent::service' do
+          let(:params) do
+            {
+              service_name: 'puppet',
+              service_enable: true,
+              service_ensure: 'running',
+            }
+          end
+          context 'with_defaults' do
             it { is_expected.to contain_service('puppet').with({
               'ensure' => 'running',
               'enable' => true,
+              'name' => 'puppet',
               })
             }
+          end
         end
-
-    end
+      end
   end
-
 end

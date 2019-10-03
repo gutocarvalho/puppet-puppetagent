@@ -2,8 +2,9 @@
 class puppetagent::service {
 
   service { 'puppet':
-    ensure => 'running',
-    enable => true,
-  }
+    ensure => $puppetagent::service_ensure,
+    enable => $puppetagent::service_enable,
+    name   => $puppetagent::service_name,
+    }
 
 }
