@@ -32,6 +32,12 @@ describe 'puppetagent', :type => :class do
           it { is_expected.to contain_augeas('agent_environment').with({
             'context' => '/files/etc/puppetlabs/puppet/puppet.conf',
           })}
+          it { is_expected.to contain_augeas('agent_splaylimit').with({
+            'context' => '/files/etc/puppetlabs/puppet/puppet.conf',
+          })}
+          it { is_expected.to contain_augeas('agent_splay').with({
+            'context' => '/files/etc/puppetlabs/puppet/puppet.conf',
+          })}
         end
 
         context 'puppetserver::service' do

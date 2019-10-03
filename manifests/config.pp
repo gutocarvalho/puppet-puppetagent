@@ -21,4 +21,14 @@ class puppetagent::config {
     changes => [ "set main/runinterval ${puppetagent::agent_runinterval}", ],
   }
 
+  augeas {'agent_splaylimit':
+    context => '/files/etc/puppetlabs/puppet/puppet.conf',
+    changes => [ "set agent/splaylimit ${puppetagent::agent_splaylimit}", ],
+  }
+
+  augeas {'agent_splay':
+    context => '/files/etc/puppetlabs/puppet/puppet.conf',
+    changes => [ "set agent/splay ${puppetagent::agent_splay}", ],
+  }
+
 }

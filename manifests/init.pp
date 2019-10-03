@@ -12,11 +12,13 @@
 # @param [String] agent_server Set the puppet server for the agent
 
 class puppetagent(
-  String $agent_certname,
-  String $agent_version,
-  String $agent_environment,
+  String  $agent_certname,
+  String  $agent_version,
+  String  $agent_environment,
   Integer $agent_runinterval,
-  String $agent_server,
+  Integer $agent_splaylimit,
+  Boolean $agent_splay,
+  String  $agent_server,
   ) {
 
   include puppetagent::install
