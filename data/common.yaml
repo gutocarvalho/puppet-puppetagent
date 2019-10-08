@@ -3,4 +3,7 @@ puppetagent::agent_certname: "%{trusted.certname}"
 puppetagent::agent_version: 'installed'
 puppetagent::agent_server: 'puppetserver.hacklab'
 puppetagent::agent_environment: 'production'
+puppetagent::agent_runinterval: 3600
+puppetagent::agent_splay: false
+puppetagent::agent_splaylimit: 1800
 puppetagent::agent_runinterval: 1800
