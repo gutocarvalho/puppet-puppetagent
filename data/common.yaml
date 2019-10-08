@@ -7,3 +7,4 @@ puppetagent::agent_runinterval: 3600
 puppetagent::service_name: 'puppet'
 puppetagent::service_ensure: 'running'
 puppetagent::service_enable: true 
+puppetagent::agent_runinterval: 1800
