@@ -6,3 +6,4 @@ puppetagent::agent_environment: 'production'
 puppetagent::agent_runinterval: 3600
 puppetagent::agent_splay: false
 puppetagent::agent_splaylimit: 1800
+puppetagent::agent_runinterval: 1800
