@@ -22,7 +22,9 @@ class puppetagent(
   String $agent_version,
   String $agent_environment,
   Integer $agent_runinterval,
-  String $agent_server,
+  Integer $agent_splaylimit,
+  Boolean $agent_splay,
+  String  $agent_server,
   ) {
 
   include puppetagent::install
